@@ -116,7 +116,7 @@ async def next_page(bot, query):
             )
 
     btn.insert(0, [
-        InlineKeyboardButton("📥 Anime batch", url=f"https://t.me/downloadanimebatch")
+        InlineKeyboardButton("📥 Download Anime batch", url=f"https://t.me/downloadanimebatch")
     ])
     try:
         await query.edit_message_reply_markup(
@@ -946,10 +946,10 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"<b>Hasil Dari Query yang dicari:\n</s>"
+        cap = f"<b>Filter Hasil Dari Query yang dicari:</s>"
     if imdb and imdb.get('poster'):
         try:
-            hehe = await message.reply_photo(photo="https://telegra.ph/file/712183473407df2c9af10.jpg", reply_to_message_id=reply_id, reply_markup=InlineKeyboardMarkup(btn))
+            hehe = await message.reply_photo(photo="https://telegra.ph/file/712183473407df2c9af10.jpg",  caption=cap[:1024], reply_to_message_id=reply_id, reply_markup=InlineKeyboardMarkup(btn))
             await asyncio.sleep(36000)
             await hehe.delete()
             await message.delete()
