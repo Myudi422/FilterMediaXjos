@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 BATCH_FILES = {}
 
-@Client.on_message(filters.command("starts") & filters.incoming & ~filters.edited)
+@Client.on_message(filters.command("start") & filters.incoming & ~filters.edited)
 async def start(client, message):
     if message.chat.type in ['group', 'supergroup']:
         buttons = [
@@ -83,8 +83,13 @@ async def start(client, message):
         buttons = [[
             InlineKeyboardButton('➕ Add me to your Chat ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
-            InlineKeyboardButton('⭕️ Help', callback_data='help1'),
+            InlineKeyboardButton('⭕️ Help', callback_data='help'),
             InlineKeyboardButton('About ⭕️', callback_data='about')
+            ],[
+            InlineKeyboardButton('🕵️ Search here Movie 🕵️', switch_inline_query_current_chat='')
+            ],[
+            InlineKeyboardButton('⭕️ Updates', url='https://t.me/josprojects'),
+            InlineKeyboardButton('Movie Club ⭕️', url='https://t.me/+y53tWFUw6Q43NzE9')
             ],[
             InlineKeyboardButton('❌ Close the Menu ❌', callback_data='close_data')
         ]]
@@ -234,6 +239,10 @@ async def start(client, message):
     if f_caption is None:
         f_caption = f"{files.file_name}"
     buttons = [
+        [
+            InlineKeyboardButton('Grup', url='https://t.me/otakuindonew'),
+            InlineKeyboardButton('Channel', url='https://t.me/downloadanimebatch')
+        ],
         [
             InlineKeyboardButton(' Tutup ✗ ', callback_data=f'close_data')
         ]
