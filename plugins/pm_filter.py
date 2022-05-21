@@ -378,7 +378,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             f_caption = f"{files.file_name}"
         buttons = [
             [
-                InlineKeyboardButton('⭕️ Support', url='https://t.me/otakuindonew'),
+                InlineKeyboardButton(' Tutup ✗ ', callback_data=f'close_data'),
             ],
             ]
 
