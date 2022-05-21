@@ -130,7 +130,6 @@ async def next_page(bot, query):
 async def private_give_filter(client, message):
         await auto_filter(client, message)
 
-
 @Client.on_callback_query(filters.regex(r"^spolling"))
 async def advantage_spoll_choker(bot, query):
     _, user, movie_ = query.data.split('#')
@@ -918,29 +917,29 @@ async def auto_filter(client, msg, spoll=False):
     imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
     TEMPLATE = settings['template']
     if imdb:
-        cap = f"<b>Filter Hasil Dari Query yang dicari:</b>"
+        cap = f"<b>Filter Hasil Dari Query yang dicari: - {search}</b>"
         
     else:
-        cap = f"<b>Filter Hasil Dari Query yang dicari:</b>"
+        cap = f"<b>Filter Hasil Dari Query yang dicari: - {search}</b>"
     if imdb:
         try:
-            hehe = await message.reply_text(f"<b>Berikut ini merupakan hasil file database dari : {search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(btn))
+            hehe = await message.reply_photo(photo="https://telegra.ph/file/712183473407df2c9af10.jpg",  caption=cap[:1024], reply_to_message_id=reply_id, reply_markup=InlineKeyboardMarkup(btn))
             await asyncio.sleep(36000)
             await hehe.delete()
             await message.delete()
         except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
-            hmm = await message.reply_text(f"<b>Berikut ini merupakan hasil file database dari : {search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(btn))
+            hmm = await message.reply_photo(photo="https://telegra.ph/file/712183473407df2c9af10.jpg", caption=cap[:1024], reply_to_message_id=reply_id, reply_markup=InlineKeyboardMarkup(btn))
             await asyncio.sleep(36000)
             await hmm.delete()
             await message.delete()
         except Exception as e:
             logger.exception(e)
-            fek = await message.reply_text(f"<b>Berikut ini merupakan hasil file database dari : {search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(btn))
+            fek = await message.reply_photo(photo="https://telegra.ph/file/712183473407df2c9af10.jpg", caption=cap, reply_to_message_id=reply_id, reply_markup=InlineKeyboardMarkup(btn))
             await asyncio.sleep(36000)
             await fek.delete()
             await msg.delete()
     else:
-        fuk = await message.reply_text(f"<b>Berikut ini merupakan hasil file database dari : {search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(btn))
+        fuk = await message.reply_photo(photo="https://telegra.ph/file/712183473407df2c9af10.jpg", caption=cap, reply_to_message_id=reply_id, reply_markup=InlineKeyboardMarkup(btn))
         await asyncio.sleep(36000)
         await fuk.delete()
         await msg.delete()
