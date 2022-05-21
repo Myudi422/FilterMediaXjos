@@ -915,10 +915,10 @@ async def auto_filter(client, msg, spoll=False):
     imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
     TEMPLATE = settings['template']
     if imdb:
-        cap = f"<b>Saya Menemukan Hasil Dari Query: - {search}</b>\n\nSubtitle Video tidak muncul? atau ingin menyimpan berkas ke perangkat atau database? - Silahkan cek tutorialnya disini: [Tutorial](https://t.me/ccgXmediaUp_bot?start=Z2V0LTEzOTY5MjAxNjMzMzYzNTIy)"
+        cap = f"<b>Saya Menemukan Hasil Dari Query: {search}</b>\n\nMenemukan Eror? Seperti, Subtitle Video tidak muncul? atau ingin menyimpan berkas ke perangkat atau database? - Silahkan cek tutorialnya disini: [Tutorial](https://t.me/ccgXmediaUp_bot?start=Z2V0LTEzOTY5MjAxNjMzMzYzNTIy)"
         
     else:
-        cap = f"Saya Menemukan Hasil Dari Query: - {search}</b>\n\nSubtitle Video tidak muncul? atau ingin menyimpan berkas ke perangkat atau database? - Silahkan cek tutorialnya disini: [Tutorial](https://t.me/ccgXmediaUp_bot?start=Z2V0LTEzOTY5MjAxNjMzMzYzNTIy)"
+        cap = f"Saya Menemukan Hasil Dari Query: {search}</b>\n\nMenemukan Eror? Seperti, Subtitle Video tidak muncul? atau ingin menyimpan berkas ke perangkat atau database? - Silahkan cek tutorialnya disini: [Tutorial](https://t.me/ccgXmediaUp_bot?start=Z2V0LTEzOTY5MjAxNjMzMzYzNTIy)"
     if imdb:
         try:
             hehe = await message.reply_photo(photo="https://telegra.ph/file/712183473407df2c9af10.jpg",  caption=cap[:1024], reply_to_message_id=reply_id, reply_markup=InlineKeyboardMarkup(btn))
