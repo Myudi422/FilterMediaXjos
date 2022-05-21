@@ -399,7 +399,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 )
                 await query.answer('Jika suka bot ini, silahkan support kami!', show_alert=False)
         except UserIsBlocked:
-            await query.answer('Unblock the bot mahn !', show_alert=True)
+            await query.answer('Anda diblokir!', show_alert=True)
         except PeerIdInvalid:
             await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
         except Exception as e:
