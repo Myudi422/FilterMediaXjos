@@ -397,7 +397,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     reply_markup=InlineKeyboardMarkup(buttons),
                     protect_content=True if ident == "filep" else True 
                 )
-                await query.answer('Jika suka bot ini, silahkan support kami!', show_alert=False)
+                await query.answer('', show_alert=False)
         except UserIsBlocked:
             await query.answer('Anda diblokir!', show_alert=True)
         except PeerIdInvalid:
