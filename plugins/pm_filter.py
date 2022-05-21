@@ -111,8 +111,9 @@ async def next_page(bot, query):
         btn.append(
             [
                 InlineKeyboardButton("⏪ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
+                InlineKeyboardButton(text=f"Tutup", callback_data="close_data"),
                 InlineKeyboardButton(f"🗓 {round(int(offset) / 10) + 1} / {round(total / 10)}", callback_data="pages"),
-                InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}"),InlineKeyboardButton(text=f"Tutup", callback_data="close_data"),],
+                InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}"),],
             )
 
     try:
@@ -914,10 +915,10 @@ async def auto_filter(client, msg, spoll=False):
     imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
     TEMPLATE = settings['template']
     if imdb:
-        cap = f"<b>Filter Hasil Dari Query yang dicari: - {search}</b>"
+        cap = f"<b>Filter Hasil Dari Query yang dicari: - {search}</b>\nSubtitle Video tidak muncul? atau ingin menyimpan berkas? - silahkan cek tutorialnya disini: [Tutorial](http://t.me/ccgnimex_bot?start=help)"
         
     else:
-        cap = f"<b>Filter Hasil Dari Query yang dicari: - {search}</b>"
+        cap = f"<b><b>Filter Hasil Dari Query yang dicari: - {search}</b>\nSubtitle Video tidak muncul? atau ingin menyimpan berkas? - silahkan cek tutorialnya disini: [Tutorial](http://t.me/ccgnimex_bot?start=help)"
     if imdb:
         try:
             hehe = await message.reply_photo(photo="https://telegra.ph/file/712183473407df2c9af10.jpg",  caption=cap[:1024], reply_to_message_id=reply_id, reply_markup=InlineKeyboardMarkup(btn))
