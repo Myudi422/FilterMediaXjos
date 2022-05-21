@@ -112,12 +112,10 @@ async def next_page(bot, query):
             [
                 InlineKeyboardButton("⏪ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
                 InlineKeyboardButton(f"🗓 {round(int(offset) / 10) + 1} / {round(total / 10)}", callback_data="pages"),
-                InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}")]
+                InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}")],
+            [   InlineKeyboardButton(text=f"Tutup", callback_data="close_data")],
             )
 
-    btn.insert(0, [
-        InlineKeyboardButton("📥 Download Anime batch", url=f"https://t.me/downloadanimebatch")
-    ])
     try:
         await query.edit_message_reply_markup(
             reply_markup=InlineKeyboardMarkup(btn)

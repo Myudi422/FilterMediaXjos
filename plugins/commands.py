@@ -214,10 +214,6 @@ async def start(client, message):
         f_caption = f"{files.file_name}"
     buttons = [
         [
-            InlineKeyboardButton('Grup', url='https://t.me/otakuindonew'),
-            InlineKeyboardButton('Channel', url='https://t.me/downloadanimebatch')
-        ],
-        [
             InlineKeyboardButton(' Tutup ✗ ', callback_data=f'close_data')
         ]
         ]
@@ -226,7 +222,7 @@ async def start(client, message):
         file_id=file_id,
         caption=f_caption,
         reply_markup=InlineKeyboardMarkup(buttons),
-        protect_content=True if pre == 'filep' else False,
+        protect_content=True if pre == 'filep' else True,
         )
                     
 
