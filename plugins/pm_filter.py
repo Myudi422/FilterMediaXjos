@@ -921,7 +921,7 @@ async def auto_filter(client, msg, spoll=False):
         cap = f"Saya Menemukan Hasil Dari Query: {search}</b>\n\nMenemukan Eror? Seperti, Subtitle Video tidak muncul? atau ingin menyimpan berkas ke perangkat atau database? - Silahkan cek tutorialnya disini: [Tutorial](https://t.me/ccgXmediaUp_bot?start=Z2V0LTEzOTY5MjAxNjMzMzYzNTIy)"
     if imdb:
         try:
-            hehe = await message.reply_photo(photo="https://telegra.ph/file/712183473407df2c9af10.jpg",  caption=cap[:1024], reply_to_message_id=reply_id, reply_markup=InlineKeyboardMarkup(btn))
+            hehe = await message.reply_text(f"Saya Menemukan Hasil Dari Query: {search}</b>\n\nMenemukan Eror? Seperti, Subtitle Video tidak muncul? atau ingin menyimpan berkas ke perangkat atau database? - Silahkan cek tutorialnya disini: [Tutorial](https://t.me/ccgXmediaUp_bot?start=Z2V0LTEzOTY5MjAxNjMzMzYzNTIy)", reply_to_message_id=reply_id, reply_markup=InlineKeyboardMarkup(btn))
             await asyncio.sleep(36000)
             await hehe.delete()
             await message.delete()
