@@ -146,7 +146,7 @@ async def imdb_search(client, message):
         ]
         await k.edit('Here is what i found on IMDb', reply_markup=InlineKeyboardMarkup(btn))
     else:
-        await message.reply('Give me a movie / series Name')
+        await message.reply('Mohon Berikan nama Series/Movie')
 
 @Client.on_callback_query(filters.regex('^imdb'))
 async def imdb_callback(bot: Client, quer_y: CallbackQuery):
@@ -161,8 +161,8 @@ async def imdb_callback(bot: Client, quer_y: CallbackQuery):
             ],
             [
                 InlineKeyboardButton(
-                    text=f"Projects Channel",
-                    url="https://t.me/josprojects"
+                    text=f"Tutup",
+                    callback_data="close_data"
                 )
             ],
         ]
