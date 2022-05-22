@@ -243,7 +243,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=keyboard,
             parse_mode="md"
         )
-        return await query.answer('Bruh, Jangan Nonton Bajakan Mulu!')
+        return await query.answer('Bruh, Kalau anime yang kalian\ncari ada versi legalnya, Tonton disana!!')
     elif "connectcb" in query.data:
         await query.answer()
 
@@ -398,7 +398,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     reply_markup=InlineKeyboardMarkup(buttons),
                     protect_content=True if ident == "filep" else True 
                 )
-                await query.answer('Bruh, Jangan Nonton Bajakan Mulu!', show_alert=False)
+                await query.answer('Bruh, Kalau anime yang kalian\ncari ada versi legalnya, Tonton disana!!', show_alert=False)
         except UserIsBlocked:
             await query.answer('Anda diblokir!, silahkan hubungi admin', show_alert=True)
         except PeerIdInvalid:
