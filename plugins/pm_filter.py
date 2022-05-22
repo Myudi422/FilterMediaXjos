@@ -243,7 +243,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=keyboard,
             parse_mode="md"
         )
-        return await query.answer('Bruh, Kalau anime yang kalian cari, ada versi legalnya, Tonton disana!!')
+        return await query.answer('Bruh, Jangan Nonton Bajakan Mulu!')
     elif "connectcb" in query.data:
         await query.answer()
 
@@ -263,7 +263,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 parse_mode="md"
             )
         else:
-            await query.message.edit_text('Some error occurred!!', parse_mode="md")
+            await query.message.edit_text('Terjadi Kesalahan!!', parse_mode="md")
         return await query.answer('')
     elif "disconnect" in query.data:
         await query.answer()
@@ -357,7 +357,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             pass
         elif int(user) != 0 and query.from_user.id != int(user):
             return await query.answer(
-                "All right, but this is not yours.;\nNice Try! But, This Was Not Your Request, Request Yourself;",
+                "All right, but this is not yours.;\nPercobaan Bagus Tapi, Ini bukan permintaan mu, silahkan coba sendiri.;",
                 show_alert=True)
 
         if not files_:
@@ -398,7 +398,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     reply_markup=InlineKeyboardMarkup(buttons),
                     protect_content=True if ident == "filep" else True 
                 )
-                await query.answer('Bruh, Kalau anime yang kalian cari, ada versi legalnya, Tonton disana!!', show_alert=False)
+                await query.answer('Bruh, Jangan Nonton Bajakan Mulu!', show_alert=False)
         except UserIsBlocked:
             await query.answer('Anda diblokir!, silahkan hubungi admin', show_alert=True)
         except PeerIdInvalid:
