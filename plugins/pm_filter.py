@@ -23,12 +23,17 @@ from database.filters_mdb import (
     get_filters,
 )
 import logging
+import random
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
 
 BUTTONS = {}
 SPELL_CHECK = {}
+
+text_random = ["Bruh!", "Wait!", "Bentar!"]
+item = random.choice(list)
+
 
 
 @Client.on_message(filters.group & filters.text & ~filters.edited & filters.incoming)
@@ -243,7 +248,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=keyboard,
             parse_mode="md"
         )
-        return await query.answer('Bruh, Jangan Nonton Bajakan Mulu!')
+        return await query.answer('{item}')
     elif "connectcb" in query.data:
         await query.answer()
 
@@ -398,7 +403,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     reply_markup=InlineKeyboardMarkup(buttons),
                     protect_content=True if ident == "filep" else True 
                 )
-                await query.answer('Bruh, Jangan Nonton Bajakan Mulu!', show_alert=False)
+                await query.answer('{item}', show_alert=False)
         except UserIsBlocked:
             await query.answer('Anda diblokir!, silahkan hubungi admin', show_alert=True)
         except PeerIdInvalid:

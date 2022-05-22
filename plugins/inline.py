@@ -74,7 +74,7 @@ async def answer(bot, query):
                 reply_markup=reply_markup))
 
     if results:
-        switch_pm_text = f"{emoji.FILE_FOLDER} Hasil - {total}"
+        switch_pm_text = f"{emoji.FILE_FOLDER} Tersedia - {total}"
         try:
             await query.answer(results=results,
                            is_personal = True,
@@ -87,7 +87,7 @@ async def answer(bot, query):
         except Exception as e:
             logging.exception(str(e))
     else:
-        switch_pm_text = f'{emoji.CROSS_MARK} Tidak Tersedia!'
+        switch_pm_text = f'Error/tidak ada didatabase!,'
 
         await query.answer(results=[],
                            is_personal = True,
