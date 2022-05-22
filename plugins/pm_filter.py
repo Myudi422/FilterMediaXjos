@@ -357,7 +357,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             pass
         elif int(user) != 0 and query.from_user.id != int(user):
             return await query.answer(
-                "All right, but this is not yours.;\nPercobaan Bagus Tapi, Ini bukan permintaan mu, silahkan coba sendiri.;",
+                "Percobaan Bagus Tapi, Ini bukan permintaan mu, silahkan coba sendiri.;",
                 show_alert=True)
 
         if not files_:
