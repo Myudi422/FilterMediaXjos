@@ -23,7 +23,7 @@ async def start(client, message):
     if message.chat.type in ['group', 'supergroup']:
         buttons = [
             [
-                InlineKeyboardButton('⭕️ Lapor ⭕️', url='t.me/otakuindonew')
+                InlineKeyboardButton('⭕️ Official Group ⭕️', url='t.me/otakuindonew')
             ],
             [
                 InlineKeyboardButton('🛠️ Help', url=f"https://t.me/{temp.U_NAME}?start=help"),
@@ -31,7 +31,7 @@ async def start(client, message):
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await client.send_sticker(chat_id=message.chat.id, sticker='CAACAgUAAxkBAAJ1k2IfDr7l8Hat1d-s1mnbBEsFXZWJAAL5BAACAdz5VOVw2x38ZZJ1HgQ', reply_markup=reply_markup, reply_to_message_id=message.message_id)
+        await client.send_photo(chat_id=message.chat.id, photo='https://telegra.ph/file/4380c87cb4c3cb6383536.jpg', reply_markup=reply_markup, reply_to_message_id=message.message_id)
         await asyncio.sleep(60)
         if not await db.get_chat(message.chat.id):
             total=await client.get_chat_members_count(message.chat.id)
