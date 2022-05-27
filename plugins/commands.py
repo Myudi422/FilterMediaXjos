@@ -59,6 +59,24 @@ async def start(client, message):
                 )
             ],
         ]
+    
+
+    if AUTH_CHANNEL and not await is_subscribed(client, message):
+        try:
+            invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
+        except ChatAdminRequired:
+            logger.error("Make sure Bot is admin in Forcesub channel")
+            return
+        btn = [
+            [
+                InlineKeyboardButton(
+                    "CHANNEL", url='t.me/downloadanimebatch'
+                ),
+                InlineKeyboardButton(
+                    "GRUP", url='t.me/otakuindonew'
+                )
+            ],
+        ]
 
         if message.command[1] != "subscribe":
             kk, file_id = message.command[1].split("_", 1)
