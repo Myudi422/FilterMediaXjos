@@ -58,6 +58,19 @@ async def start(client, message):
                 )
             ],
         ]
+    if AUTH_GROUPS and not await is_grup(client, message):
+        try:
+            invite_link = await client.create_chat_invite_link(int(AUTH_GROUPS))
+        except ChatAdminRequired:
+            logger.error("Make sure Bot is admin in Forcesub channel")
+            return
+        btn = [
+            [
+                InlineKeyboardButton(
+                    "Grup", url='t.me/otakuindonew'
+                )
+            ],
+        ]
 
         if message.command[1] != "subscribe":
             kk, file_id = message.command[1].split("_", 1)
