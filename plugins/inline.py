@@ -3,7 +3,7 @@ from pyrogram import Client, emoji, filters
 from pyrogram.errors.exceptions.bad_request_400 import QueryIdInvalid
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InlineQueryResultCachedDocument, InlineQuery
 from database.ia_filterdb import get_search_results
-from utils import is_subscribed, get_size, temp
+from utils import is_grup, is_grup, get_size, temp
 from info import CACHE_TIME, AUTH_USERS, AUTH_GROUPS, CUSTOM_FILE_CAPTION
 
 logger = logging.getLogger(__name__)
@@ -30,7 +30,7 @@ async def answer(bot, query):
                            switch_pm_parameter="hehe")
         return
 
-    if AUTH_GROUPS and not await is_subscribed(bot, query):
+    if AUTH_GROUPS and not await is_grup(bot, query):
         await query.answer(results=[],
                            cache_time=0,
                            switch_pm_text='Perbaikan!',
