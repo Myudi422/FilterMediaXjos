@@ -51,46 +51,16 @@ async def start(client, message):
         btn = [
             [
                 InlineKeyboardButton(
-                    "🤖 Ikuti Channel Kami!", url=invite_link.invite_link
+                    "Channel", url=invite_link.invite_link
                 ),
                 InlineKeyboardButton(
-                    "Bergabung Dengan Kami", url='t.me/otakuindonew'
+                    "Grup", url='t.me/otakuindonew'
                 )
-            ]
-        ]
-
-        if message.command[1] != "subscribe":
-            kk, file_id = message.command[1].split("_", 1)
-            pre = 'checksubp' if kk == 'filep' else 'checksub' 
-            btn.append([InlineKeyboardButton("🔄 Try Again 👈 Tap me 🥰", callback_data=f"{pre}#{file_id}")])
-        await client.send_message(
-            chat_id=message.from_user.id,
-            text=Script.FORCESUB_TXT,
-            reply_markup=InlineKeyboardMarkup(btn),
-            parse_mode="markdown"
-            )
-        return
-    if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
-        await message.reply_photo(
-            photo=random.choice(PICS),
-            caption=Script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
-            reply_markup=reply_markup,
-            quote=True,
-            parse_mode='html'
-        )
-        return
-    
-    if AUTH_GROUPS and not await is_grup(client, message):
-        try:
-            invite_link = await client.create_chat_invite_link(int(AUTH_GROUPS))
-        except ChatAdminRequired:
-            logger.error("Make sure Bot is admin in Forcesub channel")
-            return
-        btn = [
+            ],
             [
                 InlineKeyboardButton(
-                    "🤖 Ikuti Group Kami", url=invite_link.invite_link
-                )
+                    "Tutup", data=f"close_data"
+                ),
             ]
         ]
 
@@ -114,6 +84,7 @@ async def start(client, message):
             parse_mode='html'
         )
         return
+
     
 
     data = message.command[1]
