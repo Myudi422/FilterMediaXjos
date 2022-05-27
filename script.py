@@ -252,7 +252,7 @@ Modul ini hanya berfungsi untuk admin saya
 
     FORCESUB_TXT = """**♦️ READ THIS INSTRUCTION ♦️**
 
-__Mohon Untuk Subscribe Channel Kami!**"""
+Masih Progress....."""
 
     MEMES_TXT = """Help: <b>Memes</b>
 
