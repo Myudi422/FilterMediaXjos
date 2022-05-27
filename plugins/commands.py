@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 BATCH_FILES = {}
 
-@Client.on_message(filters.command("start") & filters.incoming & ~filters.edited)
+@Client.on_message(filters.command("startz") & filters.incoming & ~filters.edited)
 async def start(client, message):
     if message.chat.type in ['group', 'supergroup']:
         buttons = [
@@ -51,7 +51,7 @@ async def start(client, message):
         btn = [
             [
                 InlineKeyboardButton(
-                    "Channel", url=invite_link.invite_link
+                    "Channel", url='t.me/downloadanimebatch'
                 ),
                 InlineKeyboardButton(
                     "Grup", url='t.me/otakuindonew'
@@ -67,7 +67,7 @@ async def start(client, message):
         btn = [
             [
                 InlineKeyboardButton(
-                    "CHANNEL", url=invite_link.invite_link
+                    "CHANNEL", url='t.me/downloadanimebatch'
                 ),
                 InlineKeyboardButton(
                     "GRUP", url='t.me/otakuindonew'
