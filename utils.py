@@ -57,7 +57,7 @@ async def is_subscribed(bot, query):
 
 async def is_grup(bot, query):
     try:
-        user = await bot.get_id_member(AUTH_GROUPS, query.from_user.id)
+        user = await bot.get_chat_member(AUTH_GROUPS, query.from_user.id)
     except UserNotParticipant:
         pass
     except Exception as e:
