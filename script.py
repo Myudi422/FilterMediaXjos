@@ -252,13 +252,11 @@ Modul ini hanya berfungsi untuk admin saya
 
     FORCESUB_TXT = """**♦️ READ THIS INSTRUCTION ♦️**
 
-Silahkan Untuk Ikuti Channel Kami, Agar bisa mengakses Anime yang tersedia dichannel batch dan autofilter dibot.
-Untuk Penggunaan Inline, Kalian Harus bergabung digrup kami terlebih dahulu.
+Silahkan Untuk Ikuti Channel Kami, Agar bisa mengakses Database Anime yang tersedia dan autofilter dibot.
 
-Syarat Masuk Grup, Silahkan Pasang Username/Nickname kalian. kalau bisa pake Foto.
-Kami Berhak menolak, mengeluarkan atau membanned kalian, jika itu melanggar dari ketentuan kami.
+Untuk Penggunaan Inline, Kedepannya Kalian Harus bergabung digrup kami terlebih dahulu.
 
-Kami Melakukan hal ini, karena untuk memonitor pengguna serta antisipasi adanya penyalahgunaan 
+Kami Melakukan hal ini kedepannya, karena untuk memonitor pengguna serta antisipasi adanya penyalahgunaan 
 konten dari bot kami. harap mengertilah."""
 
     MEMES_TXT = """Help: <b>Memes</b>
