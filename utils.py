@@ -55,18 +55,6 @@ async def is_subscribed(bot, query):
 
     return False
 
-async def is_subscribed(bot, query):
-    try:
-        user = await bot.get_chat_member(AUTH_GROUPS, query.from_user.id)
-    except UserNotParticipant:
-        pass
-    except Exception as e:
-        logger.exception(e)
-    else:
-        if user.status != 'kicked':
-            return True
-
-    return False
 
 async def get_poster(query, bulk=False, id=False, file=None):
     if not id:
