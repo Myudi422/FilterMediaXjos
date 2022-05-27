@@ -30,7 +30,7 @@ async def answer(bot, query):
                            switch_pm_parameter="hehe")
         return
 
-    if AUTH_GROUPS and not await is_grup(bot, query):
+    if AUTH_GROUPS and not await is_subscribed(bot, query):
         await query.answer(results=[],
                            cache_time=0,
                            switch_pm_text='Harap Klik Ini Dulu :)',
