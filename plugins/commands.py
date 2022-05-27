@@ -67,7 +67,10 @@ async def start(client, message):
         btn = [
             [
                 InlineKeyboardButton(
-                    "Grup", url='t.me/otakuindonew'
+                    "CHANNEL", url=invite_link.invite_link
+                ),
+                InlineKeyboardButton(
+                    "GRUP", url='t.me/otakuindonew'
                 )
             ],
         ]
