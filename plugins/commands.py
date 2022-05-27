@@ -9,7 +9,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from database.ia_filterdb import Media, get_file_details, unpack_new_file_id
 from database.users_chats_db import db
 from info import CHANNELS, ADMINS, AUTH_CHANNEL, AUTH_GROUPS, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, PROTECT_CONTENT
-from utils import get_settings, get_size, is_grup, is_subscribed, save_group_settings, temp, is_subscribed
+from utils import get_settings, get_size, is_grup, save_group_settings, temp, is_subscribed
 from database.connections_mdb import active_connection
 import re
 import json
@@ -42,7 +42,6 @@ async def start(client, message):
         await db.add_user(message.from_user.id, message.from_user.first_name)
         await client.send_message(LOG_CHANNEL, Script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
 
-
     if AUTH_CHANNEL and not await is_subscribed(client, message):
         try:
             invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
@@ -52,31 +51,13 @@ async def start(client, message):
         btn = [
             [
                 InlineKeyboardButton(
-                    "CHANNEL", url='t.me/downloadanimebatch'
+                    "Channel", url='t.me/downloadanimebatch'
                 ),
                 InlineKeyboardButton(
-                    "GRUP", url='t.me/otakuindonew'
+                    "Grup", url='t.me/otakuindonew'
                 )
             ],
         ]
-
-    if AUTH_GROUPS and not await is_grup(client, message):
-        try:
-            invite_link = await client.create_chat_invite_link(int(AUTH_GROUPS))
-        except ChatAdminRequired:
-            logger.error("Make sure Bot is admin in Forcesub channel")
-            return
-        btn = [
-            [
-                InlineKeyboardButton(
-                    "CHANNEL", url='t.me/downloadanimebatch'
-                ),
-                InlineKeyboardButton(
-                    "GRUP", url='t.me/otakuindonew'
-                )
-            ],
-        ]
-    
 
         if message.command[1] != "subscribe":
             kk, file_id = message.command[1].split("_", 1)
