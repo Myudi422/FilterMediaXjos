@@ -28,9 +28,9 @@ auth_users = [int(user) if id_pattern.search(user) else user for user in environ
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
 ADMINS.append(1684438752)
 auth_channel = environ.get('AUTH_CHANNEL')
-auth_groups = environ.get('AUTH_GROUPS')
+auth_grp = environ.get('AUTH_GROUP')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
-AUTH_GROUPS = int(auth_groups) if auth_groups and id_pattern.search(auth_groups) else None
+AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
 
 # MongoDB information
 DATABASE_URI = environ.get('DATABASE_URI', "")
