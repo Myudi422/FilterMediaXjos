@@ -34,6 +34,7 @@ async def answer(bot, query):
         await query.answer(results=[],
                            cache_time=0,
                            switch_pm_text='Mohon Subscribe Channel kami!',
+                           protect_content=True,
                            switch_pm_parameter="subscribe")
         return
 
