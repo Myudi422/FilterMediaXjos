@@ -7,7 +7,7 @@ from utils import is_grup, get_size, is_subscribed, temp
 from info import CACHE_TIME, AUTH_USERS, AUTH_GROUPS, CUSTOM_FILE_CAPTION
 
 logger = logging.getLogger(__name__)
-cache_time = 0 if AUTH_USERS or AUTH_GROUPS else CACHE_TIME
+cache_time = 0 if AUTH_USERS else CACHE_TIME
 
 async def inline_users(query: InlineQuery):
     if AUTH_USERS:
