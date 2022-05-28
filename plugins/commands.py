@@ -42,7 +42,7 @@ async def start(client, message):
         await db.add_user(message.from_user.id, message.from_user.first_name)
         await client.send_message(LOG_CHANNEL, Script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
 
-    if AUTH_CHANNEL and not await is_grup(client, message):
+    if AUTH_CHANNEL and not await is_subscribed(client, message):
         try:
             invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
         except ChatAdminRequired:
@@ -58,24 +58,6 @@ async def start(client, message):
                 )
             ],
         ]
-    
-    if AUTH_GROUPS and not await is_subscribed(client, message):
-        try:
-            invite_link = await client.create_chat_invite_link(int(AUTH_GROUPS))
-        except ChatAdminRequired:
-            logger.error("Make sure Bot is admin in Forcesub channel")
-            return
-        btn = [
-            [
-                InlineKeyboardButton(
-                    "Channel", url='t.me/downloadanimebatch'
-                ),
-                InlineKeyboardButton(
-                    "Grup", url='t.me/otakuindonew'
-                )
-            ],
-        ]
-
 
         if message.command[1] != "subscribe":
             kk, file_id = message.command[1].split("_", 1)
@@ -88,7 +70,7 @@ async def start(client, message):
             parse_mode="markdown"
             )
         return
-    if len(message.command) == 2 and message.command[1] in ["ikuti", "error", "okay", "help"]:
+    if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         await message.reply_photo(
             photo=random.choice(PICS),
             caption=Script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
