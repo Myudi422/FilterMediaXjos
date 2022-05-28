@@ -30,7 +30,7 @@ ADMINS.append(1684438752)
 auth_channel = environ.get('AUTH_CHANNEL')
 auth_grp = environ.get('AUTH_GROUPS')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
-AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
+AUTH_GROUPS = int(auth_grp) if auth_grp and id_pattern.search(auth_grp) else None
 
 # MongoDB information
 DATABASE_URI = environ.get('DATABASE_URI', "")
