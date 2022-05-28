@@ -34,7 +34,7 @@ async def pdf_to_text(bot, message):
                 await txt.edit(f"Creating Your Audio Book...\n Please Don't Do Anything")
                 output_text = page_content + Thanks
               # Change Voice by editing the Language
-                language = 'en-id'  # 'en': ['en-us', 'en-ca', 'en-uk', 'en-gb', 'en-au', 'en-gh', 'en-in',
+                language = 'id'  # 'en': ['en-us', 'en-ca', 'en-uk', 'en-gb', 'en-au', 'en-gh', 'en-in',
                                     # 'en-ie', 'en-nz', 'en-ng', 'en-ph', 'en-za', 'en-tz'],
                 tts_file = gTTS(text=output_text, lang=language, slow=False) 
                 tts_file.save(f"{message.chat.id}.mp3")      
