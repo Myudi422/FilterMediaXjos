@@ -27,3 +27,4 @@ Pillow
 pypng
 pypdf2
 PyPDF2
+opencv-python-headless
