@@ -24,3 +24,6 @@ ffmpeg-python
 requests
 ytthumb
 Pillow
+pypng
+pypdf2
+PyPDF2
