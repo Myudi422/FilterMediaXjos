@@ -15,7 +15,7 @@ async def inline_users(query: InlineQuery):
             return True
         else:
             return False
-    if query.from_user and query.from_user.id not in temp.BANNED_USERS:
+    if query.from_user and query.from_user.id in temp.BANNED_USERS:
         return True
     return False
 
@@ -26,15 +26,8 @@ async def answer(bot, query):
     if not await inline_users(query):
         await query.answer(results=[],
                            cache_time=0,
-                           switch_pm_text='Anda Telah Kami Banned!',
+                           switch_pm_text='Sedang Perbaikan!',
                            switch_pm_parameter="hehe")
-        return
-
-    if AUTH_CHANNEL and not await is_subscribed(bot, query):
-        await query.answer(results=[],
-                           cache_time=0,
-                           switch_pm_text='Harap Klik Ini Dulu :)',
-                           switch_pm_parameter="subscribe")
         return
 
     results = []
