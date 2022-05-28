@@ -59,7 +59,7 @@ async def start(client, message):
             ],
         ]
 
-        if message.command[1] != "subscribe":
+        if message.command[1] != "ikuti":
             kk, file_id = message.command[1].split("_", 1)
             pre = 'checksubp' if kk == 'filep' else 'checksub' 
             btn.append([InlineKeyboardButton("Refresh", callback_data=f"{pre}#{file_id}"),InlineKeyboardButton("Tutup", callback_data=f"close_data")])
@@ -70,7 +70,7 @@ async def start(client, message):
             parse_mode="markdown"
             )
         return
-    if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
+    if len(message.command) == 2 and message.command[1] in ["ikuti", "error", "okay", "help"]:
         await message.reply_photo(
             photo=random.choice(PICS),
             caption=Script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
