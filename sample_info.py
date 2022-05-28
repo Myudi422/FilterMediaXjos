@@ -32,9 +32,6 @@ AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_chan
 AUTH_GROUPS = int(auth_grp) if auth_grp and id_pattern.search(auth_grp) else None
 
 
-class Config(object):
-    RemoveBG_API = os.environ.get("RemoveBG_API", "")
-
 
 # MongoDB information
 DATABASE_URI = environ.get('DATABASE_URI', "")

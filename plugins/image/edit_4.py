@@ -5,7 +5,7 @@ import shutil
 import cv2
 import io
 import os
-from sample.info import Config
+from apirmv import Config
 
 
 async def rotate_90(client, message):
