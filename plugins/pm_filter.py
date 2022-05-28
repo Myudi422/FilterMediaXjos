@@ -1,3 +1,5 @@
+
+
 # Kanged From @TroJanZheX
 import asyncio
 import re
@@ -760,7 +762,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)        
         await query.message.edit_text(        
-            text="Select your required mode from below!",
+            text="Untuk Penggunaan Fitur Hapus Background & Effect\nSilahkan untuk kirim foto dengan caption /effect.\nNanti bot akan memprosesnya.",
             reply_markup=reply_markup,
             parse_mode='html'
         )

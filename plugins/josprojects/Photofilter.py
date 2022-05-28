@@ -7,7 +7,7 @@ async def photo(client: Client, message: Message):
     try:
         await client.send_message(
             chat_id=message.chat.id,
-            text="Untuk Penggunaan Fitur Hapus Background & Effect\nSilahkan untuk kirim foto dengan caption /effect.\nNanti bot akan memprosesnya.",
+            text="Silahkan Pilih Sesuai Kebutuhan.",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
