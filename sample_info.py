@@ -1,7 +1,6 @@
 import re
 from os import environ
 
-
 id_pattern = re.compile(r'^.\d+$')
 def is_enabled(value, default):
     if value.lower() in ["true", "yes", "1", "enable", "y"]:
@@ -16,8 +15,6 @@ SESSION = environ.get('SESSION', 'Media_search')
 API_ID = int(environ['API_ID'])
 API_HASH = environ['API_HASH']
 BOT_TOKEN = environ['BOT_TOKEN']
-RemoveBG_API = os.environ.get("RemoveBG_API", "UDB4cWaSQcFfvXsSbPnwuUur")
-REMOVEAPI = int(RemoveBG_API)
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
@@ -33,7 +30,6 @@ auth_channel = environ.get('AUTH_CHANNEL')
 auth_grp = environ.get('AUTH_GROUPS')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 AUTH_GROUPS = int(auth_grp) if auth_grp and id_pattern.search(auth_grp) else None
-
 
 
 # MongoDB information
