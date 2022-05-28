@@ -3,15 +3,15 @@ from pyrogram import Client, emoji, filters
 from pyrogram.errors.exceptions.bad_request_400 import QueryIdInvalid
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InlineQueryResultCachedDocument, InlineQuery
 from database.ia_filterdb import get_search_results
-from utils import get_size, is_subscribed, temp
-from info import CACHE_TIME, AUTH_USERS, AUTH_GROUPS, AUTH_CHANNEL, CUSTOM_FILE_CAPTION
+from utils import get_size, is_grup, temp
+from info import CACHE_TIME, AUTH_USERS, AUTH_GROUPS, CUSTOM_FILE_CAPTION
 
 logger = logging.getLogger(__name__)
-cache_time = 0 if AUTH_GROUPS or AUTH_CHANNEL else CACHE_TIME
+cache_time = 0 if AUTH_USERS or AUTH_GROUPS else CACHE_TIME
 
 async def inline_users(query: InlineQuery):
-    if AUTH_GROUPS:
-        if query.from_user and query.from_user.id in AUTH_GROUPS:
+    if AUTH_USERS:
+        if query.from_user and query.from_user.id in AUTH_USERS:
             return True
         else:
             return False
@@ -26,11 +26,11 @@ async def answer(bot, query):
     if not await inline_users(query):
         await query.answer(results=[],
                            cache_time=0,
-                           switch_pm_text='Untuk skrg, ketik lngsg judulnya saja.',
+                           switch_pm_text='okDa',
                            switch_pm_parameter="hehe")
         return
 
-    if AUTH_CHANNEL and not await is_subscribed(bot, query):
+    if AUTH_GROUPS and not await is_grup(bot, query):
         await query.answer(results=[],
                            cache_time=0,
                            switch_pm_text='Harap Klik Ini Dulu :)',
