@@ -58,8 +58,26 @@ async def start(client, message):
                 )
             ],
         ]
+    
+    if AUTH_GROUPS and not await is_grup(client, message):
+        try:
+            invite_link = await client.create_chat_invite_link(int(AUTH_GROUPS))
+        except ChatAdminRequired:
+            logger.error("Make sure Bot is admin in Forcesub channel")
+            return
+        btn = [
+            [
+                InlineKeyboardButton(
+                    "Channel", url='t.me/downloadanimebatch'
+                ),
+                InlineKeyboardButton(
+                    "Grup", url='t.me/otakuindonew'
+                )
+            ],
+        ]
 
-        if message.command[1] != "ikuti":
+
+        if message.command[1] != "subscribe":
             kk, file_id = message.command[1].split("_", 1)
             pre = 'checksubp' if kk == 'filep' else 'checksub' 
             btn.append([InlineKeyboardButton("Refresh", callback_data=f"{pre}#{file_id}"),InlineKeyboardButton("Tutup", callback_data=f"close_data")])
