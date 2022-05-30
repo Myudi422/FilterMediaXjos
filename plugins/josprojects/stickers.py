@@ -16,6 +16,9 @@ from telegram import (
 from telegram.ext import CallbackContext, run_async
 from telegram.utils.helpers import mention_html
 
+from info import ADMINS
+from script import Script
+
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
 from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
