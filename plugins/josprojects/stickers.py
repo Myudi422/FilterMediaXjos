@@ -15,17 +15,15 @@ from telegram import (
 )
 from telegram.ext import CallbackContext, run_async
 from telegram.utils.helpers import mention_html
-
-from josprojects import dispatcher
-from josprojects.modules.disable import DisableAbleCommandHandler
+from pyrogram import Client, filters
 
 combot_stickers_url = "https://combot.org/telegram/stickers?q="
 
 
 @run_async
-def stickerid(update: Update, context: CallbackContext):
-    msg = update.effective_message
-    if msg.reply_to_message and msg.reply_to_message.sticker:
+@Client.on_message(filters.command(["stickerid"]))
+async def stickerid(bot, message):  
+    if message.reply_to_message and message.reply_to_message.sticker:
         update.effective_message.reply_text(
             "Hello "
             + f"{mention_html(msg.from_user.id, msg.from_user.first_name)}"
@@ -451,20 +449,3 @@ def makepack_internal(
         msg.reply_text("Failed to create sticker pack. Possibly due to I don't know 🤣.")
 
 
-__help__ = """
-╔ `/stickerid`*:* reply to a sticker to me to tell you its file ID.
-╠ `/getsticker`*:* reply to a sticker to me to upload its raw PNG file.
-╠ `/kang`*:* reply to a sticker to add it to your pack.
-╚  `/stickers`*:* Find stickers for given term on combot sticker catalogue
-"""
-
-__mod_name__ = "Stickers"
-STICKERID_HANDLER = DisableAbleCommandHandler("stickerid", stickerid)
-GETSTICKER_HANDLER = DisableAbleCommandHandler("getsticker", getsticker)
-KANG_HANDLER = DisableAbleCommandHandler("kang", kang, admin_ok=True)
-STICKERS_HANDLER = DisableAbleCommandHandler("stickers", cb_sticker)
-
-dispatcher.add_handler(STICKERS_HANDLER)
-dispatcher.add_handler(STICKERID_HANDLER)
-dispatcher.add_handler(GETSTICKER_HANDLER)
-dispatcher.add_handler(KANG_HANDLER)
