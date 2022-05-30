@@ -20,6 +20,7 @@ combot_stickers_url = "https://combot.org/telegram/stickers?q="
 
 
 @run_async
+@Client.on_message(filters.incoming & ~filters.private & filters.command('stickerid') & filters.user(ADMINS))
 def stickerid(update: Update, context: CallbackContext):
     msg = update.effective_message
     if msg.reply_to_message and msg.reply_to_message.sticker:
@@ -41,6 +42,7 @@ def stickerid(update: Update, context: CallbackContext):
 
 
 @run_async
+@Client.on_message(filters.incoming & ~filters.private & filters.command('stickers') & filters.user(ADMINS))
 def cb_sticker(update: Update, context: CallbackContext):
     msg = update.effective_message
     split = msg.text.split(" ", 1)
@@ -60,7 +62,7 @@ def cb_sticker(update: Update, context: CallbackContext):
         reply += f"\n• [{title.get_text()}]({link})"
     msg.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
 
-
+@Client.on_message(filters.incoming & ~filters.private & filters.command('getsticker') & filters.user(ADMINS))
 def getsticker(update: Update, context: CallbackContext):
     bot = context.bot
     msg = update.effective_message
@@ -78,6 +80,7 @@ def getsticker(update: Update, context: CallbackContext):
 
 
 @run_async
+@Client.on_message(filters.incoming & ~filters.private & filters.command('kang') & filters.user(ADMINS))
 def kang(update: Update, context: CallbackContext):
     msg = update.effective_message
     user = update.effective_user
@@ -448,20 +451,3 @@ def makepack_internal(
         msg.reply_text("Failed to create sticker pack. Possibly due to blek mejik.")
 
 
-__help__ = """
-• `/stickerid`*:* reply to a sticker to me to tell you its file ID.
-• `/getsticker`*:* reply to a sticker to me to upload its raw PNG file.
-• `/kang`*:* reply to a sticker to add it to your pack.
-• `/stickers`*:* Find stickers for given term on combot sticker catalogue
-"""
-
-__mod_name__ = "Stickers"
-STICKERID_HANDLER = DisableAbleCommandHandler("stickerid", stickerid)
-GETSTICKER_HANDLER = DisableAbleCommandHandler("getsticker", getsticker)
-KANG_HANDLER = DisableAbleCommandHandler("kang", kang, admin_ok=True)
-STICKERS_HANDLER = DisableAbleCommandHandler("stickers", cb_sticker)
-
-dispatcher.add_handler(STICKERS_HANDLER)
-dispatcher.add_handler(STICKERID_HANDLER)
-dispatcher.add_handler(GETSTICKER_HANDLER)
-dispatcher.add_handler(KANG_HANDLER)
