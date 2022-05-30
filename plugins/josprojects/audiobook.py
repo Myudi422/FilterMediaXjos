@@ -1,6 +1,6 @@
 import os
 import pyrogram
-import pypdf2
+import PyPDF2
 import time
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
