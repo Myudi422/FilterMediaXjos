@@ -28,4 +28,3 @@ Pillow
 pypng
 PyPDF2
 opencv-python-headless
-git+https://github.com/LonamiWebs/Telethon.git
