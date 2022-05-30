@@ -1,7 +1,7 @@
 git+https://github.com/ZauteKm/Pyrogram@master-zip
 tgcrypto==1.2.3
 pymongo[srv]==3.12.3
-python-telegram-bot
+python-telegram-bot==12.8
 motor==2.5.1
 marshmallow==3.14.1
 umongo==3.0.1
