@@ -16,19 +16,13 @@ from telegram import (
 from telegram.ext import CallbackContext, run_async
 from telegram.utils.helpers import mention_html
 
-from info import ADMINS
-from script import Script
-
-from pyrogram import Client, filters
-from pyrogram.errors import FloodWait
-from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
-from pyrogram.errors.exceptions.bad_request_400 import ChatAdminRequired, UserAdminInvalid
+from Natsuki import dispatcher
+from Natsuki.modules.disable import DisableAbleCommandHandler
 
 combot_stickers_url = "https://combot.org/telegram/stickers?q="
 
 
 @run_async
-@Client.on_message(filters.incoming & ~filters.private & filters.command('stickerid') & filters.user(ADMINS))
 def stickerid(update: Update, context: CallbackContext):
     msg = update.effective_message
     if msg.reply_to_message and msg.reply_to_message.sticker:
@@ -50,7 +44,6 @@ def stickerid(update: Update, context: CallbackContext):
 
 
 @run_async
-@Client.on_message(filters.incoming & ~filters.private & filters.command('stickers') & filters.user(ADMINS))
 def cb_sticker(update: Update, context: CallbackContext):
     msg = update.effective_message
     split = msg.text.split(" ", 1)
@@ -70,7 +63,7 @@ def cb_sticker(update: Update, context: CallbackContext):
         reply += f"\n• [{title.get_text()}]({link})"
     msg.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
 
-@Client.on_message(filters.incoming & ~filters.private & filters.command('getsticker') & filters.user(ADMINS))
+
 def getsticker(update: Update, context: CallbackContext):
     bot = context.bot
     msg = update.effective_message
@@ -88,7 +81,6 @@ def getsticker(update: Update, context: CallbackContext):
 
 
 @run_async
-@Client.on_message(filters.incoming & ~filters.private & filters.command('kang') & filters.user(ADMINS))
 def kang(update: Update, context: CallbackContext):
     msg = update.effective_message
     user = update.effective_user
@@ -458,4 +450,11 @@ def makepack_internal(
     else:
         msg.reply_text("Failed to create sticker pack. Possibly due to blek mejik.")
 
+
+
+__mod_name__ = "Stickers"
+STICKERID_HANDLER = DisableAbleCommandHandler("stickerid", stickerid)
+GETSTICKER_HANDLER = DisableAbleCommandHandler("getsticker", getsticker)
+KANG_HANDLER = DisableAbleCommandHandler("kang", kang, admin_ok=True)
+STICKERS_HANDLER = DisableAbleCommandHandler("stickers", cb_sticker)
 
