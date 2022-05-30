@@ -16,6 +16,11 @@ from telegram import (
 from telegram.ext import CallbackContext, run_async
 from telegram.utils.helpers import mention_html
 
+from pyrogram import Client, filters
+from pyrogram.errors import FloodWait
+from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
+from pyrogram.errors.exceptions.bad_request_400 import ChatAdminRequired, UserAdminInvalid
+
 combot_stickers_url = "https://combot.org/telegram/stickers?q="
 
 
