@@ -27,6 +27,5 @@ requests
 ytthumb
 Pillow
 pypng
-pypdf2
-PyPDF2
+python-pypdf2
 opencv-python-headless
