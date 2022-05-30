@@ -1,7 +1,6 @@
 git+https://github.com/ZauteKm/Pyrogram@master-zip
 tgcrypto==1.2.3
 pymongo[srv]==3.12.3
-git+https://github.com/LonamiWebs/Telethon.git
 python-telegram-bot
 motor==2.5.1
 marshmallow==3.14.1
@@ -27,6 +26,6 @@ requests
 ytthumb
 Pillow
 pypng
-pypdf2
 PyPDF2
 opencv-python-headless
+git+https://github.com/LonamiWebs/Telethon.git
