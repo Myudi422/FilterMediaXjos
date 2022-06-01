@@ -6,6 +6,7 @@ import re
 import ast
 
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
+from telegram import Bot
 from script import Script
 import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, \
@@ -176,6 +177,10 @@ async def next_page(bot, query):
     await query.answer()
 
 @Client.on_message(filters.private & filters.text & filters.incoming)
+async def private_give_filter(client, message):
+        await auto_filter(client, message)
+
+@Bot.on_message(filters.private & filters.text & filters.incoming)
 async def private_give_filter(client, message):
         await auto_filter(client, message)
 
