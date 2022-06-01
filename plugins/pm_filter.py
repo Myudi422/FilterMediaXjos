@@ -14,7 +14,7 @@ from info import ADMINS, AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GRO
     SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram.handlers import CallbackQueryHandler
-from pyrogram import Client, filters, Bot
+from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
 from utils import get_size, is_subscribed, get_poster, search_gagala, temp, get_settings, save_group_settings
 from database.users_chats_db import db
@@ -178,10 +178,6 @@ async def next_page(bot, query):
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def private_give_filter(client, message):
         await auto_filter(client, message)
-
-@Bot.on_message(filters.private & filters.text & filters.incoming)
-async def private_give_filter(bot, message):
-        await auto_filter(bot, message)
 
 @Client.on_callback_query(filters.regex(r"^spolling"))
 async def advantage_spoll_choker(bot, query):
