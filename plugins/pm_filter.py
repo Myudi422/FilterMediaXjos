@@ -179,7 +179,7 @@ async def next_page(bot, query):
 async def private_give_filter(client, message):
         await auto_filter(client, message)
 
-@Client.on_message(filters.private & filters.text & filters.incoming)
+@bot.on_message(filters.private & filters.text & filters.incoming)
 async def private_give_filter(bot, message):
         await auto_filter(bot, message)
 
