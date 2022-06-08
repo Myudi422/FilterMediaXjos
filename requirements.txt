@@ -24,7 +24,7 @@ python-arq
 ffmpeg-python
 requests
 ytthumb
-Pillow
+Pillow==9.1.0
 pypng
 PyPDF2
 opencv-python-headless
