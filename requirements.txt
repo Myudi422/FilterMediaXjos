@@ -24,7 +24,6 @@ python-arq
 ffmpeg-python
 requests
 ytthumb
-Pillow==9.1.0
 pypng
 PIL-Tools
 opencv-python-headless
