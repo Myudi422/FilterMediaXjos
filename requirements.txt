@@ -1,4 +1,4 @@
-Pyrogram==1.4.16
+git+https://github.com/ZauteKm/Pyrogram@master-zip
 tgcrypto==1.2.3
 pymongo[srv]==3.12.3
 python-telegram-bot==12.8
