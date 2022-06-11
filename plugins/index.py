@@ -23,18 +23,18 @@ async def index_files(bot, query):
     if raju == 'reject':
         await query.message.delete()
         await bot.send_message(int(from_user),
-                               f'Your Submission for indexing {chat} has been decliened by our moderators.',
+                               f'Kiriman Anda untuk pengindeksan {chat} telah ditolak oleh moderator kami.',
                                reply_to_message_id=int(lst_msg_id))
         return
 
     if lock.locked():
-        return await query.answer('Wait until previous process complete.', show_alert=True)
+        return await query.answer('Tunggu hingga proses sebelumnya selesai.', show_alert=True)
     msg = query.message
 
     await query.answer('Processing...⏳', show_alert=True)
     if int(from_user) not in ADMINS:
         await bot.send_message(int(from_user),
-                               f'Your Submission for indexing {chat} has been accepted by our moderators and will be added soon.',
+                               f'Kiriman Anda untuk pengindeksan {chat} telah diterima oleh moderator kami dan akan segera ditambahkan.',
                                reply_to_message_id=int(lst_msg_id))
     await msg.edit(
         "Starting Indexing",
@@ -68,18 +68,18 @@ async def send_for_index(bot, message):
     try:
         await bot.get_chat(chat_id)
     except ChannelInvalid:
-        return await message.reply('This may be a private channel / group. Make me an admin over there to index the files.')
+        return await message.reply('Ini mungkin saluran / grup pribadi. Jadikan saya admin di sana untuk mengindeks file.')
     except (UsernameInvalid, UsernameNotModified):
-        return await message.reply('Invalid Link specified.')
+        return await message.reply('Tautan tidak valid yang ditentukan.')
     except Exception as e:
         logger.exception(e)
         return await message.reply(f'Errors - {e}')
     try:
         k = await bot.get_messages(chat_id, last_msg_id)
     except:
-        return await message.reply('Make Sure That Iam An Admin In The Channel, if channel is private')
+        return await message.reply('Pastikan Saya Admin Di Channel, Channel Diprivate Pastikan Saya Admin Di Channel, Jika Channel Diprivate')
     if k.empty:
-        return await message.reply('This may be group and iam not a admin of the group.')
+        return await message.reply('Ini mungkin grup dan saya bukan admin grup.')
 
     if message.from_user.id in ADMINS:
         buttons = [
@@ -93,23 +93,23 @@ async def send_for_index(bot, message):
         ]
         reply_markup = InlineKeyboardMarkup(buttons)
         return await message.reply(
-            f'Do you Want To Index This Channel/ Group ?\n\nChat ID/ Username: <code>{chat_id}</code>\nLast Message ID: <code>{last_msg_id}</code>',
+            f'Apakah Anda Ingin Mengindeks Saluran/Grup Ini ?\n\nID Obrolan/ Nama Pengguna: <code>{chat_id}</code>\nID Pesan Terakhir: <code>{last_msg_id}</code>',
             reply_markup=reply_markup)
 
     if type(chat_id) is int:
         try:
             link = (await bot.create_chat_invite_link(chat_id)).invite_link
         except ChatAdminRequired:
-            return await message.reply('Make sure iam an admin in the chat and have permission to invite users.')
+            return await message.reply('Pastikan saya seorang admin dalam obrolan dan memiliki izin untuk mengundang pengguna.')
     else:
         link = f"@{message.forward_from_chat.username}"
     buttons = [
         [
-            InlineKeyboardButton('Accept Index',
+            InlineKeyboardButton('Terima Index',
                                  callback_data=f'index#accept#{chat_id}#{last_msg_id}#{message.from_user.id}')
         ],
         [
-            InlineKeyboardButton('Reject Index',
+            InlineKeyboardButton('Tolak Index',
                                  callback_data=f'index#reject#{chat_id}#{message.message_id}#{message.from_user.id}'),
         ]
     ]
@@ -117,7 +117,7 @@ async def send_for_index(bot, message):
     await bot.send_message(LOG_CHANNEL,
                            f'#IndexRequest\n\nBy : {message.from_user.mention} (<code>{message.from_user.id}</code>)\nChat ID/ Username - <code> {chat_id}</code>\nLast Message ID - <code>{last_msg_id}</code>\nInviteLink - {link}',
                            reply_markup=reply_markup)
-    await message.reply('ThankYou For the Contribution, Wait For My Moderators to verify the files.')
+    await message.reply('Terima Kasih Atas Kontribusinya, Tunggu Moderator Saya untuk memverifikasi file.')
 
 
 @Client.on_message(filters.command('setskip') & filters.user(ADMINS))
@@ -127,7 +127,7 @@ async def set_skip_number(bot, message):
         try:
             skip = int(skip)
         except:
-            return await message.reply("Skip number should be an integer.")
+            return await message.reply("Lewati nomor harus bilangan bulat")
         await message.reply(f"Successfully set SKIP number as {skip}")
         temp.CURRENT = int(skip)
     else:
@@ -182,4 +182,4 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot):
             logger.exception(e)
             await msg.edit(f'Error: {e}')
         else:
-            await msg.edit(f'Succesfully saved <code>{total_files}</code> to dataBase!\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media + unsupported}</code>(Unsupported Media - `{unsupported}` )\nErrors Occurred: <code>{errors}</code>')
+            await msg.edit(f'Berhasil disimpan <code>{total_files}</code> ke database!\nFile Duplikat Dilewati: <code>{duplicate}</code>\nPesan yang Dihapus Dilewati: <code>{dihapus}</code>\nPesan Non-Media dilewati: <code>{no_media + unsupported}</code>(Tidak didukung Media - `{unsupported}` )\nTerjadi Kesalahan: <code>{errors}</code>')

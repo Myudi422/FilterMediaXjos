@@ -87,7 +87,7 @@ async def answer(bot, query):
         except Exception as e:
             logging.exception(str(e))
     else:
-        switch_pm_text = f'Error/tidak ada didatabase!,'
+        switch_pm_text = f'Belum tersedia/Error, Silahkan REQ!'
 
         await query.answer(results=[],
                            is_personal = True,
