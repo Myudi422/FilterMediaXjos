@@ -82,7 +82,7 @@ SPELL_CHECK = {}
 
 
 
-@Client.on_message(filters.command('berkas'))
+@Client.on_message(filters.group & filters.command('berkas') & ~filters.edited & filters.incoming)
 async def give_filter(client, message):
     k = await manual_filters(client, message)
     if k == False:
