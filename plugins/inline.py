@@ -86,14 +86,6 @@ async def answer(bot, query):
             pass
         except Exception as e:
             logging.exception(str(e))
-    else:
-        switch_pm_text = f'Belum tersedia/Error, Silahkan REQ!'
-
-        await query.answer(results=[],
-                           is_personal = True,
-                           cache_time=cache_time,
-                           switch_pm_text=switch_pm_text,
-                           switch_pm_parameter="okay")
 
 
 def get_reply_markup(query):
