@@ -47,12 +47,12 @@ def a(client, message: Message):
     print(query)
     m = message.reply(f"**🔎 Mencari..** `{urlissed}`", reply_to_message_id=reply_id)
     ydl_opts = {
-        'format': 'm4a/bestaudio/best',
-        # ℹ️ See help(yt_dlp.postprocessor) for a list of available Postprocessors and their arguments
-        'postprocessors': [{  # Extract audio using ffmpeg
+        'format': 'bestaudio/best',
+        'postprocessors': [{
             'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'm4a',
-        }]
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
     }
     try:
         results = []
