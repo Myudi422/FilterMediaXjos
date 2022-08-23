@@ -29,3 +29,4 @@ PIL-Tools
 opencv-python-headless
 tswift
 youtube_dl
+yt_dlp
