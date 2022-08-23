@@ -46,7 +46,7 @@ def a(client, message: Message):
         query += ' ' + str(i)
     print(query)
     m = message.reply(f"**🔎 Mencari..** `{urlissed}`", reply_to_message_id=reply_id)
-    ydl_opts = {"format": "bestaudio[ext=m4a]", "postprocessors": [{"key": "FFmpegExtractAudio", "preferedformat": "mp3"}]}
+    ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = []
         count = 0
@@ -278,8 +278,8 @@ async def vsong(client, message: Message):
         "prefer_ffmpeg": True,
         "geo_bypass": True,
         "nocheckcertificate": True,
-        "postprocessors": [{"key": "FFmpegExtractAudio", "preferedformat": "mp3"}],
-        "outtmpl": "%(id)s.mp3",
+        "postprocessors": [{"key": "FFmpegVideoConvertor", "preferedformat": "mp4"}],
+        "outtmpl": "%(id)s.mp4",
         "logtostderr": False,
         "quiet": True,
     }
@@ -290,11 +290,11 @@ async def vsong(client, message: Message):
         await event.edit(event, f"**Download Gagal** \n**Error :** `{str(e)}`")
         return
     c_time = time.time()
-    file_stark = f"{ytdl_data['id']}.mp3"
+    file_stark = f"{ytdl_data['id']}.mp4"
     capy = f"""
 **🏷️ Video :** [{thum}]({mo})
 """
-    await client.send_audio(
+    await client.send_video(
         message.chat.id, reply_to_message_id=reply_id,
         video=open(file_stark, "rb"),
         duration=int(ytdl_data["duration"]),
