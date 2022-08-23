@@ -46,7 +46,14 @@ def a(client, message: Message):
         query += ' ' + str(i)
     print(query)
     m = message.reply(f"**🔎 Mencari..** `{urlissed}`", reply_to_message_id=reply_id)
-    ydl_opts = {"format": "bestaudio[ext=m4a]"}
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+    }
     try:
         results = []
         count = 0
