@@ -47,12 +47,15 @@ def a(client, message: Message):
     print(query)
     m = message.reply(f"**🔎 Mencari..** `{urlissed}`", reply_to_message_id=reply_id)
     ydl_opts = {
-        'format': 'bestaudio/best',
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',
-            'preferredquality': '192',
-        }],
+        "format": "bestaudio/best",
+        "addmetadata": True,
+        "key": "FFmpegMetadata",
+        "prefer_ffmpeg": True,
+        "geo_bypass": True,
+        "nocheckcertificate": True,
+        "postprocessors": [{"key": "FFmpegExtractAudio", "preferedformat": "mp3"}],
+        "logtostderr": False,
+        "quiet": True,
     }
     try:
         results = []
