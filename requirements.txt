@@ -27,4 +27,5 @@ ytthumb
 pypng
 PIL-Tools
 opencv-python-headless
-ffmpeg
+tswift
+youtube_dl
