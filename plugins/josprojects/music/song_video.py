@@ -37,7 +37,7 @@ def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
 
-@Client.on_message(filters.command(["song", "music", "mp3"]) & ~filters.channel & ~filters.edited)
+@Client.on_message(filters.command(["mp3"]) & ~filters.channel & ~filters.edited)
 def a(client, message: Message):
     urlissed = get_text(message)
     query = ''
@@ -80,7 +80,7 @@ def a(client, message: Message):
             return
     except Exception as e:
         m.edit(
-            "**Masukkan Nama Lagu dengan Perintah**❗\Misalnya: `/song Alone Marshmello`"
+            "**Masukkan Nama Lagu dengan Perintah**❗\Misalnya: `/mp3 Alone Marshmello`"
         )
         print(str(e))
         return
